@@ -1,0 +1,20 @@
+.bg {
+    margin-top: 6%;
+}
+
+
+.day {
+    background-image: url(./assets/day.png);
+    /* background: rgb(93, 255, 166); */
+    opacity: 1;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    height: 100%;
+    font-family: 'Numans', sans-serif;
+}
+
+.btbg {
+    height: 100%;
+    align-content: center;
+}

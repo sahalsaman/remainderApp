@@ -1,0 +1,67 @@
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand">hi, {{user}}</a>
+    </div>
+</nav>
+<!-- ======================== nav bar ===================== -->
+<div class="container bg">
+    <div class="row" style="height: 20rem">
+        <div class="col-12 p-5 day">
+            <button class="btn btn-outline-dark float-right" routerLink="/dashBoard">Home</button>
+            <p style="font-size:8rem;margin-top:75px;">{{today | date:'shortTime' }}</p>
+            <p style="font-size:3ch;margin-top: 50px;">{{today | date:'d LLLL YYYY, EEEE'}}</p>
+            <!-- <p style="font-size:3ch;margin-top: 0ch;">{{today | date:'shortTime' }}</p> -->
+            <!-- <div>Event : {{todayEvent}}</div> -->
+            
+
+ 
+
+        </div>
+        <div class="col-12" style="background-color: rgb(255, 255, 255);">
+            <div class="d-flex justify-content-center">
+                <table style="height: 20rem;">
+                    <tbody>
+                        <tr>
+                            <td class="align-middle">
+                                
+                                <table  class="table table-striped ">
+                                    <thead>
+                                        <tr><th>Date</th><th>Event</th><th>..</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let e of events">
+                                            <td class="align-middle">{{e.date}}</td>
+                                            <td  class="align-middle">{{e.event}}</td>
+                                            <td class="row">
+                                                <form [formGroup]="EditEvent" >
+                                                    
+                                                    <div class="w-100 ">
+                                                        <input type="text" name="uEvent" formControlName="uEvent"
+                                                            class="form-control" placeholder="Event">
+                                                    </div>
+                                                    <div *ngIf="(this.EditEvent.get('uEvent')?.dirty || this.EditEvent.get('uEvent')?.touched)&&(this.EditEvent.get('uEvent')?.errors)"
+                                                        style="color:red;">Invalid event name</div>
+                                                
+                                            </form>
+                                                <button class="btn btn-outline-success ml-1" (click)="editEvent(e.date)" >Edit Event</button>
+                                                <button class="btn btn-outline-success ml-1" (click)="deleteEvent(e.date)" >Delete</button>
+                                            </td>
+                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+                           
+
+
+                            </td>
+                        </tr>
+                        <tr>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

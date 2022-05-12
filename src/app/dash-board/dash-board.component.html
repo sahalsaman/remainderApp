@@ -1,0 +1,78 @@
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand">hi, {{user}}</a>
+        <form class="d-flex">
+            <button class="btn btn-outline-success" (click)="logout()" type="submit">Logout</button>
+        </form>
+    </div>
+</nav>
+<!-- ======================== nav bar ===================== -->
+<div class="container bg">
+    <div class="row" style="height: 20rem">
+        <div class="col-6 p-5 day">
+            <p style="font-size:8rem;margin-top:65px;">{{today | date:'d'}}</p>
+            <p style="font-size:3ch;margin-top: 50px;">{{today | date:'EEEE, LLLL YYYY'}}</p>
+            <p style="font-size:3ch;margin-top: 0ch;">{{today | date:'shortTime' }}</p>
+            <!-- <div>Event : {{todayEvent}}</div> -->
+            <button class="btn btn-outline-light" routerLink="/viewEvents">View All Events</button>
+        </div>
+        <div class="col-6" style="background-color: rgb(255, 255, 255);">
+            <div class="d-flex justify-content-center">
+                <table style="height: 20rem;">
+                    <tbody>
+                        <tr>
+                            <td class="align-middle">
+                                <h3>Add Event</h3>
+                                <form [formGroup]="EventAdd" (ngSubmit)="addEvent()">
+                                    <div class="row g-3">
+                                        <div class="w-25">
+                                            <input type="date" name="nDate" formControlName="nDate" class="form-control"
+                                                placeholder="Date">
+                                        </div>
+                                        <div class="w-50">
+                                            <input type="text" name="nEvent" formControlName="nEvent"
+                                                class="form-control" placeholder="Event">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" value="Add Event" class="btn login_btn ">
+                                        </div>
+                                        <div *ngIf="(this.EventAdd.get('nDate')?.dirty || this.EventAdd.get('nDate')?.touched)&&(this.EventAdd.get('nDate')?.errors)"
+                                            style="color:red;">Date required</div>
+                                        <div *ngIf="(this.EventAdd.get('nEvent')?.dirty || this.EventAdd.get('nEvent')?.touched)&&(this.EventAdd.get('nEvent')?.errors)"
+                                            style="color:red;">Invalid event name</div>
+                                    </div>
+                                </form>
+                                <hr>
+                                <h3>View Event</h3>
+                                <form [formGroup]="eventView" (ngSubmit)="viewEvent()">
+                                    <div class="row g-3">
+
+                                        <div class="w-50">
+                                            <input type="date" name="sDate" formControlName="sDate" class="form-control"
+                                                placeholder="Date">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" value="View Event" class="btn login_btn ">
+                                        </div>
+                                        
+                                    </div>
+                                    <div *ngIf="(this.eventView.get('sDate')?.dirty || this.eventView.get('sDate')?.touched)&&(this.eventView.get('sDate')?.errors)"
+                                        style="color:red;">Date required</div>
+                                </form>
+
+                                <div>Event : {{vEvent}}</div>
+                                
+                                
+
+                            </td>
+                        </tr>
+                        <tr>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

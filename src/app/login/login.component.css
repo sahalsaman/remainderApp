@@ -1,0 +1,12 @@
+.bg{
+    height: 100%;
+    align-content: center;
+    }
+    
+.card{
+    margin-top: 10%;
+    margin-bottom: auto;
+    }
+.btn:hover{
+    background: rgb(221, 221, 221);
+}
